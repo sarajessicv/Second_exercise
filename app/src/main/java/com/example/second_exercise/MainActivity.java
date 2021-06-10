@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,18 +27,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button buttongoogle = (Button) findViewById(R.id.googlebutton);
+        WebView web = (WebView) findViewById(R.id.webView);
         buttongoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = "https://www.google.fi";
-                Uri address = Uri.parse(url);
+                String url = "http://www.google.com";
+                web.loadUrl(url);
+
+
+                // kumpikaan koodi ei toimi todennäköisesti koska emulaattorin chrome ei toimi
+                /*Uri address = Uri.parse(url);
                 Intent googleIntent = new Intent(Intent.ACTION_VIEW, address);
                 if (googleIntent.resolveActivity(getPackageManager()) != null){
                     startActivity(googleIntent);
                 }
                 else{
                     System.out.println("eipä taida toimia");
-                }
+                }*/
             }
         });
 
